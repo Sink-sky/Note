@@ -56,6 +56,10 @@ empty();clear();erase();
 //相似的大小查询方法
 size();resize();
 //vector,deque支持随机访问
+//链表结合 
+//std::list::splice
+splice();
+L1.splice(L1,L2);//位置+结合后清空链表
 ```
 
 ## 关联式容器
@@ -66,15 +70,17 @@ size();resize();
 
 **multiset,multimap 可重复元素**
 
-**unordered_map 哈希表(无序哈希map)**
+**unordered_set,unordered_map 哈希表(无序哈希)**
 
 共有的一些函数
 
 ```c++
-//相似的迭代方法
+//相似的迭代方法(哈希表无反向迭代器)
 begin();end();rbegin();rend();
 //相似的插入方法
 insert();
+//相似的查找方法
+find();
 //相似的查空清空方法
 empty();clear();erase();
 //相似的大小查询方法
@@ -84,6 +90,11 @@ count();
 //第三个模板参数可以自定义排序规则,需要传入一个仿函数.
 //bool operator()(const YouType & a,const YouType & b)
 //C++对struct做了很大的扩充,以至于struct与class最大区别就只有访问控制了.
+//map重载了[],可以用map[key]=value赋值,multimap无.
+//哈希表可以修改哈希函数
+//C++ std::hash仿函数
+//std::size_t h1 = std::hash<std::string>{}(s.first_name);
+//std::size_t operator()(S const& s)
 ```
 
 
@@ -105,6 +116,12 @@ front();back();
 empty();
 //相似大小方法
 size();
+//可以自定义优先队列的优先函数
+template<
+    class T,
+    class Container = std::vector<T>,
+    class Compare = std::less<typename Container::value_type>
+> class priority_queue;
 ```
 
 
